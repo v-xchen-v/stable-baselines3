@@ -3,7 +3,8 @@ import os.path
 from typing import Callable
 
 import numpy as np
-# from gymnasium import error, logger
+from gymnasium import error
+# from gymnasium import logger
 
 from stable_baselines3.common.vec_env.base_vec_env import VecEnv, VecEnvObs, VecEnvStepReturn, VecEnvWrapper
 from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
@@ -117,9 +118,9 @@ class VecVideoRecorder(VecEnvWrapper):
             self.recorded_frames.append(frame)
         else:
             self._stop_recording()
-            logger.warn(
-                f"Recording stopped: expected type of frame returned by render to be a numpy array, got instead {type(frame)}."
-            )
+            # logger.warn(
+            #     f"Recording stopped: expected type of frame returned by render to be a numpy array, got instead {type(frame)}."
+            # )
 
     def close(self) -> None:
         """Closes the wrapper then the video recorder."""
@@ -139,7 +140,8 @@ class VecVideoRecorder(VecEnvWrapper):
         assert self.recording, "_stop_recording was called, but no recording was started"
 
         if len(self.recorded_frames) == 0:  # pragma: no cover
-            logger.warn("Ignored saving a video as there were zero frames to save.")
+            pass
+            # logger.warn("Ignored saving a video as there were zero frames to save.")
         else:
             from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
 
@@ -152,4 +154,5 @@ class VecVideoRecorder(VecEnvWrapper):
     def __del__(self) -> None:
         """Warn the user in case last video wasn't saved."""
         if len(self.recorded_frames) > 0:  # pragma: no cover
-            logger.warn("Unable to save last video! Did you call close()?")
+            # logger.warn("Unable to save last video! Did you call close()?")
+            print("Warning: Unable to save last video! Did you call close()?")

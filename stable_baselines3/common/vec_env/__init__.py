@@ -97,7 +97,7 @@ __all__ = [
     "VecMonitor",
     "VecNormalize",
     "VecTransposeImage",
-    # "VecVideoRecorder",
+    "VecVideoRecorder",
     "is_vecenv_wrapped",
     "sync_envs_normalization",
     "unwrap_vec_normalize",

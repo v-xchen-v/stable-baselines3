@@ -3,7 +3,7 @@ import os.path
 from typing import Callable
 
 import numpy as np
-from gymnasium import error, logger
+# from gymnasium import error, logger
 
 from stable_baselines3.common.vec_env.base_vec_env import VecEnv, VecEnvObs, VecEnvStepReturn, VecEnvWrapper
 from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
